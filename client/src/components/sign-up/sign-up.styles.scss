@@ -2,6 +2,11 @@
     width: 380px;
     flex-direction: column;
 
+    @media only screen and (max-width: 600px) {
+
+        width: 320px;
+    }
+
     .title {
         margin-bottom: -1%;
     }

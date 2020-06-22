@@ -9,10 +9,9 @@ import { createStructuredSelector } from "reselect";
 import { selectIsFetching } from "../../redux/shop/shop.selectors";
 const CollectionsOverviewWithSpinner = withSpinner(CollectionsOverview);
 class ShopPage extends React.Component {
-  unsubscribe = null;
+  // unsubscribe = null;
   componentDidMount() {
-    console.log(this.props);
-    const { dispatch, fetchCollectionsAsync } = this.props;
+    const { fetchCollectionsAsync } = this.props;
     // const collectionRef = firestore.collection("collections");
     // this.unsubscribe = collectionRef.onSnapshot(async (snapshot) => {
     //   dispatch(fetchShopData(collectionMap(snapshot)));

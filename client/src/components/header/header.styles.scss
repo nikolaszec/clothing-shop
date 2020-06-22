@@ -5,6 +5,8 @@
     justify-content: space-between;
     margin-bottom: 25px;
 
+
+
     .logo-container {
         height: 100%;
         width: 70px;
@@ -22,6 +24,42 @@
             padding: 10px 15px;
             font-size: 20px;
             cursor: pointer;
+            border: 1px solid transparent;
+
+
+
+            &:hover {
+                transition: .3s;
+                border: 1px solid black;
+            }
         }
     }
+}
+
+@media only screen and (max-width: 600px) {
+
+    .header {
+
+        align-items: flex-end;
+
+        .options {
+            width: 100%;
+
+        }
+
+        .logo-container {
+            padding: 1px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+
+}
+
+.active-link {
+    color: rgba(4, 33, 66, 0.705);
+
+
 }

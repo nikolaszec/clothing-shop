@@ -10,6 +10,7 @@ export default class SignUp extends Component {
     email: "",
     password: "",
     confirmPassword: "",
+    error: "",
   };
 
   handleSubmit = async (event) => {
@@ -32,6 +33,7 @@ export default class SignUp extends Component {
         confirmPassword: "",
       });
     } catch (error) {
+      this.setState({ error: error.message });
       console.log(error);
     }
   };
@@ -41,6 +43,9 @@ export default class SignUp extends Component {
     this.setState({
       [name]: value,
     });
+    if (this.state.error) {
+      this.setState({ error: "" });
+    }
   };
 
   render() {
@@ -84,6 +89,7 @@ export default class SignUp extends Component {
           />
           <CustomButton type="submit">SIGN UP</CustomButton>
         </form>
+        {this.state.error ? <p>{this.state.error}</p> : null}
       </div>
     );
   }

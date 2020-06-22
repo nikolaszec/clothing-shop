@@ -32,12 +32,18 @@ const CheckoutPage = ({ cartItems, total }) => {
       {cartItems.map((cartItem) => {
         return <CheckoutItem key={cartItem.id} cartItem={cartItem} />;
       })}
-      <span className="total">Total $ {total}</span>
-      <StripeCheckoutButton price={total} />
-      <div className="test-message">
-        <strong>Card number for testing -></strong> 4242424242424242{" "}
-        <strong>EXP DATE</strong> -> 12/21 <strong>CVC</strong> 123
-      </div>
+      {cartItems.length > 0 ? (
+        <React.Fragment>
+          <span className="total">Total $ {total}</span>
+          <StripeCheckoutButton price={total} />
+          <div className="test-message">
+            <strong>Card number for testing -></strong> 4242424242424242{" "}
+            <strong>EXP DATE</strong> -> 12/21 <strong>CVC</strong> 123
+          </div>
+        </React.Fragment>
+      ) : (
+        <h3>No products in cart.</h3>
+      )}
     </div>
   );
 };

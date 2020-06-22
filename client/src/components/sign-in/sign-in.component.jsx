@@ -9,6 +9,7 @@ class SignIn extends React.Component {
   state = {
     email: "",
     password: "",
+    error: "",
   };
 
   handleSubmit = async (e) => {
@@ -16,9 +17,13 @@ class SignIn extends React.Component {
 
     //to do
     const { email, password } = this.state;
-    await auth.signInWithEmailAndPassword(email, password);
-
-    this.setState({ email: "", password: "" });
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({ email: "", password: "" });
+    } catch (error) {
+      console.log(error, "greskaaa");
+      this.setState({ error: error.message });
+    }
   };
 
   handleChange = (e) => {
@@ -27,6 +32,9 @@ class SignIn extends React.Component {
     this.setState({
       [name]: value,
     });
+    if (this.state.error) {
+      this.setState({ error: "" });
+    }
   };
 
   render() {
@@ -62,6 +70,7 @@ class SignIn extends React.Component {
             </CustomButton>
           </div>
         </form>
+        {this.state.error ? <p>{this.state.error}</p> : null}
       </div>
     );
   }
